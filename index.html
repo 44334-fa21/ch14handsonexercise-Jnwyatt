@@ -1,13 +1,68 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 	<head> 
-		<title>LASTNAME Chapter14HandsOnExercise</title> 
+		<title>Wyatt Chapter14HandsOnExercise</title> 
 		<meta charset="utf-8"> 
+        <!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Fotorama from CDNJS, 19 KB -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 		<style>
-		
+		input { display: block;
+        margin-bottom: 1em;
+        }
+label { float: left;
+        width: 5em;
+		padding-right: 1em;
+        text-align: right; 
+}
+#submit { margin-left: 7em; }	
 		</style>
 	</head> 
 <body> 
-
+    <h1> Personal information</h1>
+<form method="post"
+      action="http://webdevbasics.net/scripts/demo.php"
+      onsubmit="return validateForm();">
+<label for="userName">Name:</label>
+<input type="text" name="userName" id="userName">
+<label for="userAge">Age:</label>
+<input type="text" name="userAge" id="userAge">
+<label for="userCity">City:</label>
+<input type="text" name="userCity" id="userCity">
+<input type="submit" value="Send information" id="submit">
+    </form>
+    <script>
+    function validateForm(){ 
+    if(document.forms[0].userCity.value == ""){
+     alert("City field cannot be empty");
+        
+    }
+        
+    if (document.forms[0].userAge.value <18 ){
+       alert("Age is less than 18. You don't have access") 
+        return false;
+        }
+     alert("Name and age are valid"); 
+    return true;
+    }
+    
+    $(document).ready(function(){
+     $("more").click(function(){
+         $("details").toggle();
+     });   
+    });
+    </script>
+    <h1> Slideshow</h1>
+<div class="fotorama" data-autoplay="true">
+  <img src="photo1.jpg" data-caption="Golden Gate Bridge" alt="Goldlen Gate Bridge">
+  <img src="photo2.jpg" data-caption="Rocky Coastline" alt="Rocky Coastline">
+  <img src="photo3.jpg" data-caption="Clouds on the Coast" alt="Clouds on the Coast">
+  <img src="photo4.jpg" data-caption="Waterfall Near Big Sur" alt="Waterfall Near Big Sur">
+  <img src="photo5.jpg" data-caption="Waves Crashing on the Coast" alt="Waves Crashing on the Coast">
+  <img src="photo6.jpg" data-caption="Sunset on the Coast" alt="Sunset on the Coast">
+</div>
+    
 </body> 
 </html> 
